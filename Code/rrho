@@ -1,0 +1,188 @@
+accretion.f:         v_acc(i)= - m_dot/(4.*pi*rad(i)**2*rrho(i))
+Check.dat:fr1(i)=e2phi(i)*qqq1(i)/cv1(i)-ephi(i)*pres(i)/cv1(i)*(dlog(rrho1(i))-dlog(orrho(i)))/dtime*contraction
+Check.dat:fr(i)=e2phi(i)*qqq(i)/cv(i)-ephi(i)*pres(i)/cv(i)*(dlog(rrho(i))-dlog(orrho(i)))/dtime*contraction
+Check.dat:d=rrho1(i)=rrho(i) of this time step
+Check.dat:orrho=rrho of the previous time step
+heating.f:        if (rrho(i).lt.rhocore) then
+heating.f:        if (rrho(i).ge.rhocore) then
+heating.f:        if (rrho(i).lt.rhodrip) then
+heating.f:          if ( (rho_pycno(j).ge.rrho( i )) .and.
+heating.f:     1         (rho_pycno(j).lt.rrho(i-2)) ) then
+heating.f:          if ( (rho_pycno(j).ge.rrho( i )) .and.
+heating.f:     1         (rho_pycno(j).lt.rrho(i-2)) ) then
+heating.f:c	write(93,'(3E14.4)')rad(i),rrho(i),qpycno(i)
+heating.f:     1           (imax,rad,rrho,tcn,dvol,j_44)
+heating.f:       dimension rad(0:isize),rrho(0:isize),tcn(0:isize),
+heating.f:         if ((rrho(i).ge.rhodrip).and.(rrho(i).lt.rhocore)) then
+heating.f:          j_heat(i)=tcn(i)**3*rrho(i)**(1./3.)*rad(i)**3*
+heating.f:c          print '(1p1e12.3,0p1f10.5)',rrho(i),j_heat(i)*
+heating.f:     1            4.7e18*(temp/1.e9)**2*(2.8e14/rrho(i))**(1./3.)
+heating.f:          if ( (rho_burning(j).ge.rrho( i )) .and.
+heating.f:     1         (rho_burning(j).lt.rrho(i-2)) ) then
+heating.f:	write(92,'(4E14.4)')rad(i),rrho(i),qburning(i)
+heating.f:c	write(92,'(4E14.4)')rad(i),rrho(i),qburning(i),
+neutrino_core.f:     1       i,rrho(i),T,qnu-qnu_eebr-qnu_ssbr,qnu_eebr,qnu_ssbr,
+NSCool.f:     2          rrho1(0:isize),orrho(0:isize)
+NSCool.f:       call initialize_heating_vortex_creep(imax,rad,rrho,tcn,dvol,j_44)
+NSCool.f:     2        'at rho=',rrho(icht),'T=',temp(icht)
+NSCool.f:     2        'at rho=',rrho(ichs),'S=',stoke(ichs)
+NSCool.f:       rrho(i)=orrho(i)
+NSCool.f:       rrho1(i)=rrho(i)
+NSCool.f:       x=(dlog(rrho(i+1))-dlog(rrho(i)))/
+NSCool.f:     1   (dlog(rrho(i+1))-dlog(rrho(i-1)))
+NSCool.f:       y=(dlog(rrho(i))-dlog(rrho(i-1)))/    
+NSCool.f:     1   (dlog(rrho(i+1))-dlog(rrho(i-1)))
+NSCool.f:     1               pres(i),a_cell(i),z_ion(i),rrho(i))
+NSCool.f:        rrho(i)=min(rrho(i),rhod(i))
+NSCool.f:        bar(i)=1.d-39 * 6.022d23*rrho(i)
+NSCool.f:        dr=debar(i)/rrho(i)*factor
+NSCool.f:       d=rrho(i)
+NSCool.f:c       write(90,'(13E14.4)')rrho(i),qnu(i),
+NSCool.f:c       write(90,'(11E13.3)')rrho(i),
+NSCool.f:c         write(91,'(i7,6E14.4)')i,rad(i),rrho(i),qnu(i),
+NSCool.f:c       write(91,'(6E14.4)')rrho(i),cv(i),
+NSCool.f:c         write(91,'(i7,3E14.4)')i,rad(i),rrho(i),cv(i)
+NSCool.f:c       write(91,'(3E14.4)')rrho(i),cv(i),cv_n(i)
+NSCool.f:c       write(90,'(2E14.4)')rrho(i),qnu(i)/cv(i)
+NSCool.f:c       write(92,'(3E14.4)')rrho(i),lambda(i)
+NSCool.f:     2       *(dlog(rrho(i))-dlog(orrho(i)))/dtime*contraction
+NSCool.f:c	write(92,*)i,rad(i),rrho(i),taud(i),tauc(i)
+NSCool.f:c	  logrrhomid   = y * dlog( rrho(itsmax) )
+NSCool.f:c     1                 + x * dlog( rrho(itsmin) )
+NSCool.f:c	  rrhomid=dexp(logrrhomid)
+NSCool.f:cc	write(91,'(3E14.4)') rrho(itsmin),rrhomid,rrho(itsmax)
+NSCool.f:c	write(92,'(5E14.4)')t,radtsmid,rrhomid,taudmid,taucmid
+NSCool.f:cc	do while (rrho(j).le.rho10) 
+NSCool.f:cc          x=(dlog(rrho(i10))-dlog(rho10))/
+NSCool.f:cc     1      (dlog(rrho(i10))-dlog(rrho(i10+2)))
+NSCool.f:cc          y=(dlog(rho10)-dlog(rrho(i10+2)))/
+NSCool.f:cc     1      (dlog(rrho(i10))-dlog(rrho(i10+2)))
+NSCool.f:       x=(dlog(rrho(i+1))-dlog(rrho(i)))/
+NSCool.f:     1   (dlog(rrho(i+1))-dlog(rrho(i-1)))
+NSCool.f:       y=(dlog(rrho(i))-dlog(rrho(i-1)))/    
+NSCool.f:     1   (dlog(rrho(i+1))-dlog(rrho(i-1)))
+NSCool.f:     1               rrho1(i))
+NSCool.f:        rrho1(i)=min(rrho1(i),rhod(i))
+NSCool.f:        bar1(i)=1.d-39 * 6.022d23*rrho1(i)
+NSCool.f:       d=rrho1(i)
+NSCool.f:     2        *(dlog(rrho1(i))-dlog(orrho(i)))/dtime*contraction
+NSCool.f:     1             time,ts1,ts2,z_ion(imax),a_ion(imax),rrho(imax),
+NSCool.f:     1             time,ts1,ts2,z_ion(imax),a_ion(imax),rrho(imax),
+NSCool.f:     1             time,ts1,ts2,z_ion(imax),a_ion(imax),rrho(imax),
+NSCool.f:	ntp=ftb_ZARho(teff0,z_ion(imax),a_ion(imax),rrho(imax))
+NSCool.f:     1             time,ts1,ts2,z_ion(imax),a_ion(imax),rrho(imax),
+NSCool.f:     1             time,ts1,ts2,z_ion(imax),a_ion(imax),rrho(imax),
+NSCool.f:       orrho(i)=rrho(i)
+NSCool.f:       orrho(i)=rrho(i)
+NSCool.f:       gamma(i)=2.273d5*z_ion(i)**2*(rrho(i)/a_cell(i))**(1.d0/3.d0)/
+NSCool.f:c	do while (rrho(j).le.rho10) 
+NSCool.f:c          x=(dlog(rrho(i10))-dlog(rho10))/
+NSCool.f:c     1      (dlog(rrho(i10))-dlog(rrho(i10+2)))
+NSCool.f:c          y=(dlog(rho10)-dlog(rrho(i10+2)))/
+NSCool.f:c     1      (dlog(rrho(i10))-dlog(rrho(i10+2)))
+NSCool.f:c     1               rrho(i10),rho10,rrho(i10+2),
+NSCool.f:     1    'Rho_s=',rrho(icryst),'(',icryst,')'
+NSCool.f:     1    'Rho_l=',rrho(iliq),'(',iliq,')'
+NSCool.f:     1    'Rho_l=',rrho(iliq),'(',iliq,')',
+NSCool.f:     2    'Rho_s=',rrho(icryst),'(',icryst,')'
+NSCool_INIT_TPROF.inc.f:       x=(dlog(rrho(i+1))-dlog(rrho(i)))/
+NSCool_INIT_TPROF.inc.f:     1   (dlog(rrho(i+1))-dlog(rrho(i-1)))
+NSCool_INIT_TPROF.inc.f:       y=(dlog(rrho(i))-dlog(rrho(i-1)))/    
+NSCool_INIT_TPROF.inc.f:     1   (dlog(rrho(i+1))-dlog(rrho(i-1)))
+NSCool_INIT_TPROF.inc.f:        call density(temp(i)/ephi(i),pres(i),a_ion(i),z_ion(i),rrho(i))
+NSCool_INIT_TPROF.inc.f:        rrho(i)=min(rrho(i),rhod(i))
+NSCool_INIT_TPROF.inc.f:        bar(i)=6.022d-16*rrho(i)
+NSCool_INIT_TPROF.inc.f:        dr=debar(i)/rrho(i)*factor
+NSCool_INIT_TPROF.inc.f:       call conduct(i,temp(i)/ephi(i),rrho(i),
+NSCool_INIT_TPROF.inc.f:       call opacity(temp(i)/ephi(i),rrho(i),a_cell(i),z_ion(i),kappa(i))
+NSCool_INIT_TPROF.inc.f:       acd=7.56d-15*c/(3.d0*kappa(i)*rrho(i))
+NSCool_INIT_TPROF.inc.f:       orrho(i)=rrho(i)
+NSCool_INIT_TPROF.inc.f:       rrho1(i)=rrho(i)
+Binary file NSCool.o matches
+NSCool_OPEN.inc.f:     1      i,rad(i)/100.,emas(i),rrho(i),pres(i),bar(i),
+NSCool_OPEN.inc.f:     1       i,rad(i)/100.,emas(i),rrho(i),pres(i),bar(i),
+NSCool_OPEN.inc.f:     1       i,rad(i)/100.,emas(i),rrho(i),pres(i),bar(i),
+NSCool_OPEN.inc.f:         rhodurca=rrho(i)
+NSCool_OPEN.inc.f:     1   'rho_cen=',rrho(0)
+NSCool_OPEN.inc.f:     4   rrho(idump1),rrho(idump2),rrho(idump3),
+NSCool_OPEN.inc.f:         rhodurca=rrho(i)
+NSCool_OPEN.inc.f:     1   'rho_cen=',rrho(0)
+Binary file NSCool.out matches
+NSCool_PRINT.inc.f:     2        rad(i)/1.d2,rrho(i),ephi(i),dvol(i)+dvol(i+1),
+precool.f:        rrho(0)=rho_t(1)
+precool.f:         rrho(i)=w1*rho_t(j-1) +w2*rho_t(j)
+precool.f:        rrho(icore)=rhocore
+precool.f:         rrho(i)=10.d0**lrho
+precool.f:         rrho(i)=10.d0**lrho
+precool.f:                   rrhoo(i)=10.d0**lrho
+precool.f:	           write(91,*)i,rrhoo(i)
+precool.f:           	   if (rrhoo(i).gt.rhoburn) jh_t=jh_t+1
+precool.f:	    write(*,*)jh,rrhoo(jh-1),rrhoo(jh),rrhoo(jh+1)
+precool.f:c	    dlogrho=log10(rrhoo(jh)/rrhoo(jh+1))
+precool.f:	    dlinrho=rrhoo(jh)-rrhoo(jh+1)
+precool.f:c                   lrho=log10(rrhoo(jh))-float(i)*dlrho
+precool.f:c                   rrhoh(i)=10.d0**lrho
+precool.f:                   rrhoh(i)=rrhoo(jh)-float(i)*dlrho
+precool.f:	           rrhoh(1)=rhoburn+epsilon
+precool.f:	           rrhoh(2)=rhoburn-epsilon
+precool.f:		write(94,*)jh,rrho(jh)
+precool.f:		write(94,*)jh+1,rrho(jh+1)
+precool.f:	           rrho(i+1)=rrhoh(i-jh)
+precool.f:        	   write(94,*)i,rrho(i)
+precool.f:                   rrho(i)=rrhoo(i-iref)
+precool.f:        	   write(94,*)i,rrho(i)
+precool.f:                   write(95,*)i,rrho(i)
+precool.f:         if (rho_t(j).gt.rrho(i)) goto 600
+precool.f:         w1=(log10(rrho(i))-log10(rho_t(j)))/dellrho
+precool.f:        rrho(idrip)=rhodrip
+precool.f:        rrho(isurf)=rhosurf
+precool.f:         if (rrho(i).lt.rhoenv) ienv=i
+precool.f:        rrho(0)=rho_t(1)
+precool.f:         rrho(i)=w1*rho_t(j-1) +w2*rho_t(j)
+precool.f:        rrho(icore)=rhocore
+precool.f:c         rrho(i)=10.d0**lrho
+precool.f:        rrho(idrip-1)=1.1*rhodrip
+precool.f:        rrho(idrip)=rhodrip
+precool.f:         rrho(i)=10.d0**lrho
+precool.f:         if (rho_t(j).gt.rrho(i)) goto 600
+precool.f:         w1=(log10(rrho(i))-log10(rho_t(j)))/dellrho
+precool.f:        rrho(idrip)=rhodrip
+precool.f:        rrho(isurf)=rhosurf
+precool.f:        rrho(idrip-1)=rhodrip
+precool.f:         if (rrho(i).lt.rhoenv) ienv=i
+precool.f:c     x     i,rad(i)/100.,rrho(i),pres(i),emas(i),dvol(i)
+precool.f:         if(rrho(i0).ge.rho_t(1))then
+precool.f:         else if(rrho(i0).le.rho_t(ix))then
+precool.f:          if((rrho(i0).ge.rho_t(i+1)).and.(rrho(i0).le.rho_t(i)))then
+precool.f:         x1=(dlog(rho_t(i2))-dlog(rrho(i0)))/
+precool.f:         x2=(dlog(rrho(i0))-dlog(rho_t(i1)))/
+precool.f:c     1       rho_t(i1),rrho(i0),rho_t(i2),x1,x2,i1,i2
+precool.f:     2           i0,rrho(i0),btot,qtot
+precool.f:     2           i0,rrho(i0),btot,qtot
+precool.f:     2           i0,rrho(i0),btot,qtot
+precool.f:     2           i0,rrho(i0),btot,qtot
+precool.f:         if (rho_t(j).ge.rrho(icore)) then
+precool.f:        rho_t(jmax) =rrho(icore)
+precool.f:         if (rrho(i).le.rho_t(j)) goto 100
+precool.f:         w2=(rrho(i)-rho_t(j))/dd
+precool.f:         nion=rrho(i)/(1.66d-24*a_ion(i))             ! ion density per cm^3
+precool.f:c     1       i ,rrho( i ),bar(  i ),
+precool.f:c$$$        rhodrip=rrho(idrip)
+precool.f:c     x         i,rrho(i),pres(i),bar(i),
+precool.f:         nion=rrho(i)/(1.66d-24*a_ion(i))
+precool.f:c     1       i ,rrho( i ),bar(  i ),
+precool.f:        rhodrip=rrho(idrip)
+precool.f:c     1      i,rrho(i),bar(i),yelect(i),yneutr(i)
+precool.f:     1          j,'Rho= ',rrho(j),': charge/fm3= ',charge
+precool.f:     1        j,'Rho= ',rrho(j),': sum(baryons)/baryon#= ',baryon
+precool.f:          dens=rrho(i)
+precool.f:         rhod(i)=rrho(i)
+precool.f:          rhod(i)=max(dexp(lrhod),rrho(i))
+precool.f:          if ((i.lt.imax).and.(rrho(i+1).eq.rhod(i+1))) then
+precool.f:           rhod(i)=rrho(i)
+Binary file precool.o matches
+profile_star.inc.f:      dimension rad(0:isize),rrho(0:isize),pres(0:isize),
+profile_star.inc.f:     4          rrhoh(0:isize),rrhoo(0:isize)
+profile_star.inc.f:      common/profile_star/rad,rrho,pres,
+spec_heat_test.f:cc       write(87,'(5E14.4)')rrho(i),
+spec_heat_test.f:cc       write(86,'(12E14.4)')rrho(i),

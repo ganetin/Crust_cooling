@@ -1,0 +1,19 @@
+ PAIRING CONTROL:---------------------------------------
+302.        	1: SFB	2:CCDK	3:WAP	5: B1	6:B2	7:B3   
+150.      	Minimal gap, adjusted
+7.        	3: T73   5: AO   7: CCDK
+0.	  	SFL1S0
+1.	  	FN1S0
+1.	  	FN3P2
+1.	  	FP1S0
+1.	  	FL1S0
+0.        	SFQUARK
+
+2.3       	KFMAX_N3P2 [fm^-1]     For SFN3P2=150.
+0.8       	DELKF_N3P2 [fm^-1]     For SFN3P2=150.
+0.555E+09   	TCMAX_N3P2 [K]         For SFN3P2=150.
+
+
+I_Pairing_SFB-2.3-0.8-0.555-CCDK.dat
+
+

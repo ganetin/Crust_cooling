@@ -1,0 +1,21 @@
+Parameters for the calculations on the specific heat of superfluid neutrons
+12  (number of zones)
+ 0  2.900E+14  0.1E+0  1.00  0.5669 1.0   1.0  0.015
+ 1  8.011E+13  3.8E-2  2.80  0.54   0.935 0.88 0.015
+ 2  3.432E+13  1.7E-2  3.95  0.53   0.93  0.86 0.015
+ 3  1.496E+13  7.5E-3  2.80  0.5669 0.97  0.91 0.02
+ 4  9.685E+12  4.6E-3  1.75  0.62   1.0   1.0  0.025
+ 5  6.257E+12  3.0E-3  1.18  0.60   1.0   1.0  0.025
+ 6  2.665E+12  1.15E-3 0.87  0.5669 1.1   1.1  0.025
+ 7  1.472E+12  5.3E-4  0.36  0.5669 1.0   1.0  0.015
+ 8  1.004E+12  2.8E-4  0.15  0.5    1.0   1.0  0.005
+ 9  6.692E+11  1.3E-4  0.08  0.5    1.0   1.0  0.005
+ 10 5.409E+11  7.4E-5  0.016 0.5    1.0   1.0  0.005
+ 11 3.285E+11  0.0E0   0.01  0.5669 1.0   1.0  0.005
+
+# z   nt       rhon     gap   a0     a1    a2   a3
+     g/cm-3     fm-3
+
+Fit des chaleurs specifiques HFB obtenues par Fabrizio
+Cellules de Negele Vautherin
+Interaction d'appariement PRC 75, 065807 (2007)

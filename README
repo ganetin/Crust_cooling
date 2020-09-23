@@ -1,0 +1,11 @@
+Bonjour, dzien dobry,
+
+before running the example script Cooling.py in the folder Cooling you have to do the following:
+1) in TOV: gfortran -o TOV -C TOV.f (or use your favorite compiler for TOV.f)
+2) in Code: just type 'make' to compile the NSCool code
+3) in Cooling: type 'python Cooling.py' and now it should work like a charm!
+
+Have fun with the cooling code!
+Morgane
+
+#Sept. 2020

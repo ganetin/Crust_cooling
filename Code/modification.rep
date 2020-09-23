@@ -1,0 +1,36 @@
+c Pairing suppression:
+
+ccc FORTIN M : 04/08/2010
+ccc Optimization of the code : avoiding reading 'SF_suppression.dat' when not needed
+      if (qdurca_np.ne.0.d0) then
+ccc
+      if ((t.gt.tcn(i)).and.(t.gt.tcp(i))) then
+       r_np=1.d0
+      else if ((t.gt.tcn(i)).and.(t.le.tcp(i))) then
+       tt=t/tcp(i)
+       u=u_1s0(tt)
+       r_np=r_1s0(u)
+      else if ((t.le.tcn(i)).and.(t.gt.tcp(i))) then
+       if (i.ge.isf) then 
+        tt=t/tcn(i)
+        u=u_1s0(tt)
+        r_np=r_1s0(u)
+       else
+        tt=t/tcn(i)
+        u=u_3p2B(tt)
+        r_np=r_3p2B(u)
+       end if
+      else
+       tt1=t/tcp(i)
+       u1=u_1s0(tt1)
+       if (i.ge.isf) then 
+        tt2=t/tcn(i)
+        u2=u_1s0(tt2)
+        r_np=r_1s0_1s0(u1,u2)
+       else
+        tt2=t/tcn(i)
+        u2=u_3p2B(tt2)   ! Not needed for r_1s0_3p2B
+        r_np=r_1s0_3p2B(tt1,tt2)
+       end if
+      end if
+ccc FORTIN M : 04/08/2010
