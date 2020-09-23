@@ -1,0 +1,15 @@
+# KS 1731-260
+# Effective temperature from Merrit et al. ApJ (2016)
+# 1-sigma error
+
+# table 1 + t0= 51930.5 MJD
+# MJD 		kTeff^inf (ev)	1-sigma error
+ 51995.1 	104.6 	 1.3
+ 52165.7 	89.5 	 1.03
+ 52681.6 	76.4 	 1.8
+ 52859.5 	73.8 	 1.9
+ 53430.5 	71.7 	 1.4
+ 53512.9 	70.3 	 1.9
+ 54969.7 	64.5 	 1.8
+ 57242.1	64.4 	 1.2
+

@@ -1,0 +1,24 @@
+PRINT OUT CONTROL:
+1	PSCREEN
+0.      DEBUG
+0       ISTEP DEBUG
+1	PTEFF
+0	PTEMP
+0	PSTAR
+1	IDUMP1
+111	IDUMP2
+421	IDUMP3
+8.5e3	TEMPMIN  
+5.2e+07	TEMPINI
+ELECTRON SPECIFIC HEAT in OUTER CRUST CONTROL:------------
+0       ICVEL_NODEG
+LATTICE SPECIFIC HEAT CONTROL:------------
+3       ICVION
+EFFECTIVE MASS CONTROL:-----------------------------------
+5	EMNCO
+5	EMNCR
+3	EMP
+INITIAL ROTATIONAL PERIOD:--------------------------------
+0.1	p0: initial spin period
+TPRINT: times at which you select the profiles---------
+

@@ -712,7 +712,7 @@ c      do i=imax,1,-2
 
 
 c***************Original temperature ******
-c      t=ntemp(i)/ephi(i)
+      t=ntemp(i)/ephi(i)
 c******************************************
 c	t=1e7/ephi(i)
 
@@ -837,7 +837,7 @@ ccc*********************************************************c
 c       write(*,*)'qnu_core',qnu_core,log10(qnu_core)
 c       write(*,*)'qnu_core*e2phi',lnu_core,log10(lnu_core)
 c       write(*,*)'rhocore', rhocore
-	stop
+c	stop
 
 cc*********************** Cooling time scales ********************
 c

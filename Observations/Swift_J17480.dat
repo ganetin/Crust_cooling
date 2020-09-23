@@ -1,0 +1,13 @@
+# Ter 5 : PSR J17480-2446
+# Effective temperature from Degenaar et al. MNRAS 2015
+
+# table 2
+# 1-sigma level of confidence
+#t0=56166 MJD
+# k=8.617343e-5 eV.K^-1
+
+56187.5		98.2 	 2.2 
+56228		93.9 	 2.6 
+56340		90.0 	 1.6 
+56489.5		90.1 	 2.7
+56855.5		88.0 	 1.9

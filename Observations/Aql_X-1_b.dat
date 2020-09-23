@@ -1,0 +1,15 @@
+
+# Aql X-1
+# Effective temperature from Waterhouse+ 2016
+
+# table 6 + t0= MJD 56518 
+# k=8.617343e-5 eV.K^-1
+#Instrument 	 MJD 	 $kT^{\infty}$		+	-
+#	 	  	 (eV) 	
+#Days 	 $kT_{\rm eff}^{\infty}$ (eV)
+#56516.5 	209.3	6.0
+56521.0		182.2	3.7
+56524.2		159.0	2.7
+56535.2		141.8	3.0
+56559.2		126.5	2.4
+

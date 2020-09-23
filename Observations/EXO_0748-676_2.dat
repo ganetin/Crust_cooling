@@ -1,0 +1,20 @@
+# EXO_0748-767
+# Effective temperature from Degenaar et al. ApJ 791 (2014)
+
+# table 2 + t0= 54714 MJD
+# 90% level of confidence
+# k=8.617343e-5 eV.K^-1
+#Instrument 	 MJD 	 $kT^{\infty}$		+	-
+#	 	  	 (eV) 	
+chan 		54755.5  129.1			2.3	-2.3 	 
+XMM 	 	54776 	 126.1			2.2	-2.2 	 
+chan 	 	54886 	 122.6			2.6	-2.6 	 
+XMM 	 	54908 	 120.0			2.0	-2.0 	 
+chan 	 	54992 	 117.8			2.5	-2.5 	 
+XMM 	 	55013 	 115.5			2.2	-2.2 	 
+chan 	 	55306 	 116.8			2.5	-2.5 	 
+XMM 	 	55364 	 116.2			1.9	-1.9 	 
+chan 	 	55489 	 115.4			2.2	-2.2 	 
+chan 	 	55745 	 117.6			2.2	-2.2 	 
+chan 	 	56505 	 109.9			2.0	-2.0 	 
+

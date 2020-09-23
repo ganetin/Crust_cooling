@@ -1,0 +1,16 @@
+# MXB 1659-29
+# Effective temperature from Cackett et al., MNRAS 372, 479-488 (2006)
+# Effective temperature from Cackett et al., ApJ 687, L87-90 (2008), table 1 D= 10 kpc
+# Effective temperature from Cackett et al., ApJ774 (2013)
+# table 4 + t0= 52159.5 MJD
+# 1-sigma errors
+# k=8.617343e-5 eV.K^-1
+# MJD	    kT_{eff]^{inf} (ev)	   + 1-sigma	   - 1-sigma	+2-sigma	-2-sigma
+52197.8	          121	               1	          -1	          2	     -2
+52563.2	          85	               1	          -1	          2	     -2
+52712.2	          77	               1	          -1	          2	     -2
+52768.9	          73	               1	          -1	          2	     -2
+53560.0        	  58	               2	          -2	          4	     -4
+53576.7        	  54	               3	          -3	          6	     -6
+54583.8           56                  2              -2             4         -4
+56114.5		55			3		-3	 6		-6
