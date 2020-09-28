@@ -748,7 +748,7 @@ c ****
 c *****  Read  parameters *********************************************
         if (read.ne.1.) then
          open(unit=11,
-     x   file='../../Code_DCH/Data_Files/con_crust_cryst_Itoh.dat',
+     x   file='../Code/Data_Files/con_crust_cryst_Itoh.dat',
      x        status='old')
           read(11,*) jtext,jmax
           do j=1,jtext
@@ -1139,7 +1139,7 @@ c **********************************************************************
       dimension AT(MAXT),AR(MAXR),AZ(MAXZ),AKAP(MAXT,MAXR,MAXZ)
       data KRUN/-1/
       if (KRUN.ne.12345) then ! Reading
-         open(1,file='../../Code_DCH/Data_Files/condall06.d'
+         open(1,file='../Code/Data_Files/condall06.d'
      x    ,status='OLD')
 c         print*,'Reading thermal conductivity data...'
          read(1,'(A)') ! skip the first line

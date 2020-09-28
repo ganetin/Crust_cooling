@@ -18,7 +18,7 @@ c       INCLUDE 'Base_Dir.inc.f'
        save logt,nalpha,n2,i_do_it
 c***************************************************
         if(i_do_it.eq.314159) goto 666
-        open(unit=20,file='../../Code_DCH/Data_Files/Nalpha.dat')
+        open(unit=20,file='../Code/Data_Files/Nalpha.dat')
          do i=1,56
           read(20,*)temp,nalpha(i)
           logt(i)=log10(temp)+9.d0       ! converts T9 to T

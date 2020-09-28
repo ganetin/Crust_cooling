@@ -2,7 +2,7 @@ c *********************************************************************
 c ************     Read Filenames for Physics    **********************
 c *********************************************************************
 
-      open(unit=21,file='../../Code_DCH/Data_Files/FILES_PHYS.dat',
+      open(unit=21,file='../Code/Data_Files/FILES_PHYS.dat',
      x     status='old')
        read(21,*)f_concryst
        read(21,*)f_opacity
@@ -15,7 +15,7 @@ c *********************************************************************
 c **************     Read Numerical Parameters    *********************
 c *********************************************************************
 
-      open(unit=22,file='../../Code_DCH/Data_Files/NUM_PARAM.dat',
+      open(unit=22,file='../Code/Data_Files/NUM_PARAM.dat',
      y     status='old')
        read(22,*)
        read(22,*)time0,timemax,istepmax,itrial_max,itrial_opt,tcut
