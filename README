@@ -3,7 +3,8 @@ Bonjour, dzien dobry,
 before running the example script Cooling.py in the folder Cooling you have to do the following:
 1) in TOV: gfortran -o TOV -C TOV.f (or use your favorite compiler for TOV.f)
 2) in Code: just type 'make' to compile the NSCool code
-3) in Cooling: type 'python Cooling.py' and now it should work like a charm!
+3) in Cooling: type 'python Cooling.py' and now it should work like a charm! Cooling.py will produce a bunch of cooling curves for different initial temperature and accretion rates. It simulates the cooling of a NS based on the bsk20 model for the EOS and the accreted crust and accretes matter for 12.5 years 5000 years after it was born. 
+4) in Cooling: Compa_models_KS.py finds the cooling that best-reproduced the observations (in other words minimizing the chi square) and plot its with the observations.
 
 Have fun with the cooling code!
 Morgane
