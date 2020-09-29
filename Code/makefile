@@ -30,7 +30,7 @@ DEPENDS  = precool.o \
            opacity.o \
            neutrino.o neutrino_core.o neutrino_crust.o \
            heating.o spec_heat.o density.o boundary.o tc.o tc_Ioffe.o\
-           eff_mass.o rotation.o accretion.o magnetic.o Tools.o
+           eff_mass.o rotation.o accretion.o magnetic.o Tools.o TOV.o
 
 #--------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------
@@ -86,6 +86,8 @@ magnetic.o: magnetic.f
 	$(COMPILER) $(OPTIONS) -c magnetic.f
 Tools.o: Tools.f
 	$(COMPILER) $(OPTIONS) -c Tools.f
+TOV.o: TOV.f
+	$(COMPILER) $(OPTIONS) -c TOV.f
 
 clean:
 	rm -f *.o *~

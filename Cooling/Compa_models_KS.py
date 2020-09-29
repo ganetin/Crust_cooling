@@ -135,7 +135,7 @@ while temp<=5.1e7:
   mdot=mdot+0.1e-9
   Mdot="{:.1e}".format(mdot) 
   i=i+1
-  name="Teff_"+Temp+"_"+Mdot+"_0_Acc_5e3_1e8_1.0"
+  name="Teff_"+Temp+"_"+Mdot+"_0_Acc_5e3_1e8_1.4"
   print(name)
   if os.path.isfile(name+".dat")==True:
    print(Temp,Mdot)
@@ -163,7 +163,7 @@ while temp<=5.1e7:
 
 index_optimal=Chiok.index(min(Chiok))
 print("Optimal model:",Tempok[index_optimal],Mdotok[index_optimal],Chiok[index_optimal])
-name="Teff_"+"{:.1e}".format(Tempok[index_optimal])+"_"+"{:.1e}".format(Mdotok[index_optimal])+"_0_Acc_5e3_1e8_1.0"
+name="Teff_"+"{:.1e}".format(Tempok[index_optimal])+"_"+"{:.1e}".format(Mdotok[index_optimal])+"_0_Acc_5e3_1e8_1.4"
 ax4.plot(read_Teff(name+".dat",delay)[0],read_Teff(name+".dat",delay)[1],'-',color='k',linestyle='-',linewidth=1.5,label="{:.1e}".format(Tempok[index_optimal])+"_"+"{:.1e}".format(Mdotok[index_optimal]))
 
 

@@ -192,21 +192,8 @@ c      Ask for the input file *****************************************
 c       write(6,*) 'Input master file ='
 c       read(5,*)filename
 c ***  Can add here the directory where "Cool_*.in" is:
-c       filename='CasA/'//filename
-c       filename='Defence/'//filename
-c       filename='Cv2/'//filename
-c       filename='Sym_e/APR/'//filename
-c       filename='Model_1/'//filename
-c      filename='Envelope/XTE/'//filename
-c      filename='Acc_steady_state/APR+HZ/'//filename
-c      filename='QPXRT/IGR_J17480-2446/'//filename
-c      filename='QPXRT/MXB_1659-29/'//filename
       filename='DCH_HZ08.in'
 c ***  Or define it completely here: **********************************
-c      filename='Acc_steady_state/APR+HZ/1.4_APR+HZ_SFBa.in'
-c       filename='Ter5/test.in'
-c       filename='Ofengeim/BSk21_2.0_O.in'
-c       filename='Beznogov/Isolated_Ioffe.in'
 c       filename='OPUS15/DCH_BSK21.in'
 c       write(6,*)'Using as input: ',filename
 c**********************************************************************
@@ -387,10 +374,9 @@ c *********************************************************************
 c      if (ifield.ne.0) call initialize_dipole(i0,i1)
       if (i_acc.eq.3) then 
           m_dot0=mdot_tab(i_model)
-	  write(90,*)m_dot0,i_model
+c	  write(90,*)m_dot0,i_model
       endif
 	if(i_acc.ne.4) call initialize_accretion_rate
-
 
       if (i_heat_vortex_creep.eq.1) then
        call initialize_heating_vortex_creep(imax,rad,rrho,tcn,dvol,j_44)
@@ -696,17 +682,6 @@ cccccccccccccccccccccccccc
       end if 
       end do 
 
-c      do i=1,imax,2
-c       if(rrho(i).ge.rhocore) then
-c       write(90,*)rrho(i),pres(i),bar(i),yelect(i),ymuon(i),yneutr(i)
-c     4 ,yprot(i),mstp(i),mstn(i)
-c a_cell(i),a_ion(i),z_ion(i)
-c      end if 
-c      end do 
-c      stop
-!        write(6,*) 'Temperature ?'
-!        read(5,*)t
-
       do i=1,imax,2
 c      do i=imax,1,-2
 
@@ -714,7 +689,6 @@ c      do i=imax,1,-2
 c***************Original temperature ******
       t=ntemp(i)/ephi(i)
 c******************************************
-c	t=1e7/ephi(i)
 
        d=rrho(i)
        a=a_cell(i)
@@ -765,7 +739,7 @@ c          m_dot=m_dot_av
 c          lq_av=lq_av+e2phi(i)*heat(i)*(dvol(i)+dvol(i+1))
 
        qqq(i)=qnu(i)-heat(i)
-c	t=1e9
+
        call specheat_hfb(i,t,d,a,a1,z,cv(i),
      1      cv_n(i),cv_p(i),cv_e(i),cv_m(i),
      2      cv_l(i),cv_sm(i),cv_s0(i),cv_sp(i),
@@ -816,125 +790,8 @@ ccc*********************************************************c
 !        write(91,'(3E14.4)')rrho(i),cv(i),lambda(i)
 
 	enddo
-
-!      cv_core=0
-!      do i=1,imax,2
-!       if(rrho(i).ge.rhocore) then
-!       cv_core=cv_core+cv(i)*(dvol(i)+dvol(i+1))
-!      end if 
-!      end do 
-!       write(*,*)'cv_core',cv_core
-
-!      qnu_core=0
-!      lnu_core=0
-!      do i=1,imax,2
-!       if(rrho(i).ge.rhocore) then
-!       qnu_core=qnu_core+qnu(i)*(dvol(i)+dvol(i+1))
-!       lnu_core=lnu_core+e2phi(i)*qnu(i)*(dvol(i)+dvol(i+1))
-!      end if 
-!      end do 
-
-c       write(*,*)'qnu_core',qnu_core,log10(qnu_core)
-c       write(*,*)'qnu_core*e2phi',lnu_core,log10(lnu_core)
-c       write(*,*)'rhocore', rhocore
-c	stop
-
-cc*********************** Cooling time scales ********************
-c
-cc Thickness of the inner crust
-c	ric=-rad(idrip)+rad(imax)
-c	ric=-rad(1)+rad(imax)
-cc Number of zones for the calculations of the time scales
-c	its=200
-cc Thickness of the zones for the calculations of the time scales
-c	lts=ric/its
-cc Radius of the zones for the time scale calculations
-c	do is=1,its+1
-c	radts(is)=rad(idrip)+(is-1)*lts
-c	radts(is)=rad(1)+(is-1)*lts
-c	enddo
-c
-c	j=idrip
-c	j=1
-c	do is=1,its+1
-cc index of the lower shell 
-c	itsmin=j
-c	do while ( rad(j).le.radts(is) ) 
-c	j=j+2
-cc since the cv are defined for even indices
-c	enddo
-cc index of the upper shell
-c	itsmax=j
-cc in the case of the outermost shell, its boundary correspond to the boundary of the outer layer
-c	if (is.eq.its+1) itsmax=imax
-c
-c	if (itsmax.ne.itsmin) then
-cc radius of the middle of the zone
-c	radtsmid=(rad(itsmin)+rad(itsmax)) / 2.
-c          x=( dlog( radtsmid )   - dlog( rad(itsmin) ) )/
-c     1      ( dlog( rad(itsmax) )- dlog( rad(itsmin) ) )
-c          y=( dlog( rad(itsmax) )- dlog( radtsmid ) )/
-c     1      ( dlog( rad(itsmax) )- dlog( rad(itsmin) ) )
-c
-c	  logrrhomid   = y * dlog( rrho(itsmax) )
-c     1                 + x * dlog( rrho(itsmin) )
-c	  logcvmid     = y * dlog( cv(itsmax) )
-c     1                 + x * dlog( cv(itsmin) )
-c	  loglambdamid = y * dlog( lambda(itsmax) )
-c     1                 + x * dlog( lambda(itsmin) )
-c	  logqnumid    = y * dlog( qnu(itsmax) )
-c     1                 + x * dlog( qnu(itsmin) )
-c
-c	  rrhomid=dexp(logrrhomid)
-c	  cvmid=dexp(logcvmid)
-c	  lambdamid=dexp(loglambdamid)
-c	  qnumid=dexp(logqnumid)
-cc	write(92,*)itsmin,itsmax
-cc	write(92,'(3E14.4)') rrho(itsmin),rrhomid,rrho(itsmax)
-cc	write(92,'(5E14.4)') cv(itsmin),cvmid,cv(itsmax)
-cc	write(92,'(3E14.4)') lambda(itsmin),lambdamid,lambda(itsmax)
-cc	write(92,'(3E14.4)') qnu(itsmin),qnumid,qnu(itsmax)
-c	taudmid=cvmid*t/qnumid
-c	taucmid=( lts )**2*cvmid/lambdamid
-c	tts(is)=t
-c	rrhots(is)=rrhomid
-c	rts(is)=radtsmid
-c	taucts(is)=taucmid
-c	taudts(is)=taudmid
-c	else
-c	tts(is)=t
-c	rrhots(is)=rrho(itsmin)
-c	rts(is)=rad(itsmin)
-c	taucts(is)=0
-c	taudts(is)=cv(itsmax)*t/qnu(itsmax)
-c 	endif
-c	enddo
-c
-c	taup(its+1)=taucts(its+1)*pi**2./4.
-c	taub(its+1)=1./pi**2.*(sqrt(taucts(its+1)*pi**2./4.))**2.
-c
-c	do is=its,1,-1
-cc Pizzochero et al. 2002 formula, ApJ 569
-c	taup(is)=taup(is+1)+taucts(is)*pi**2./4.
-c	tausum=0.d0
-c	do isum=its+1,is,-1
-c	tausum=sqrt(taucts(isum)*pi**2./4.)+tausum
-c	enddo
-cc Brown et al. 1998 formula, ApJ L95
-c	taub(is)=1./pi**2.*(tausum)**2.
-c	enddo
-c
-c	do is=1,its+1
-c	write(93,'(i7,5E14.4)')is,tts(is),rts(is),rrhots(is),taudts(is),
-c     1              taub(is)
-c	enddo
-c
-c	write(93,*)
-c	enddo
-cc**********************************************************************
-c	stop
-
-
+!          stop
+        
 c *********************************************************************
 c ***** Calculate the new density at (1-tinc)*ntemp *******************
 c *********************************************************************
@@ -944,7 +801,6 @@ c *********************************************************************
       do i=1,imax,2
        ntemp1(i)=ntemp(i)*(1.d0-tinc)
       end do
-
       do i=imax-1,ienv+1,-2
        x=(dlog(rrho(i+1))-dlog(rrho(i)))/
      1   (dlog(rrho(i+1))-dlog(rrho(i-1)))

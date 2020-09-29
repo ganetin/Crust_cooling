@@ -53,7 +53,7 @@ c         lambda=lambda_e+lambda_mu+
 c     1          lambda_bar*f_had+
 c     2          lambda_qrk*(1.d0-f_had)
 cccccccccccccc
-         lambda=lambda_e+lambda_mu+lambda_bar
+         lambda=lambda_e+lambda_mu+lambda_bar*f_had
 c         write(95,*)rho,lambda,lambda_e,lambda_mu,lambda_bar
 ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
          sigma =0.d0

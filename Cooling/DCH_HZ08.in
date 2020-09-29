@@ -2,7 +2,7 @@
 BASIC MODEL FILES:
   '../EOS/Crust/Crust_EOS_BSk20.dat'
   '../EOS/BSk20_EOS_Acc_Fe.dat'
-  '../TOV/Profile/Prof_BSk20_Acc_Fe_1.0.dat'
+  '../TOV/Profile/1.4.dat'
 OTHER MODEL FILES:'
   '../I_Files/I_Struct_1.4e14-4.0e11-1e8_fine.dat'
   '../I_Files/I_Bound_Acc.dat'
@@ -14,7 +14,7 @@ OTHER MODEL FILES:'
   '../I_Files/I_Acc_KS.dat'
 OUTPUT FILES:
   'I.dat'
-  'Teff_5.2e+07_2.2e-09_0_Acc_5e3_1e8_1.0.dat'
+  'Teff_5.2e+07_2.2e-09_0_Acc_5e3_1e8_1.4.dat'
   'whatever'
   'whatever'
   'Stuff'

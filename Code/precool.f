@@ -10,6 +10,7 @@ c       INCLUDE 'profile_comp.inc.f'
        dimension rad_t(10000),bar_t(10000),rho_t(10000),pres_t(10000),
      1            emas_t(10000),phi_t(10000)
        parameter (pi=3.1415926535d0)
+       real*8 targetmass
 c Define zone indices: icore, idrip & isurf ***
        icore=2*((icore-1)/2)+1           ! Makes sure icore is odd
        idel1=int(Log10(rhocore/rhodrip)*float(idec))
@@ -29,8 +30,11 @@ c       print *,icore,idrip,isurf
 c       read(5,*)
 c Read Star structure file: ********************************
         open(unit=20,file=f_profile,status='old')
+         read(20,*)iprof
+         write(*,*)iprof
+         if (iprof.eq.1) then
+         write(*,*)'Profile being read'
          read(20,*)jtext,jmax
-         write(*,*)jtext,jmax
          jmax=jmax+1         ! Line indices in file star at j=0 instead of 1
          read(20,*)
          read(20,*)Model
@@ -51,6 +55,21 @@ c     1     rad_t(j),bar_t(j),rho_t(j),pres_t(j),emas_t(j),phi_t(j)
             jcore=j-1
            end if
          end do
+         endif
+         if (iprof.eq.2) then
+         write(*,*)'Profile being calculated'
+         read(20,*)targetmass
+         call TOV(f_stareos,targetmass,rad_t,bar_t,rho_t,pres_t,
+     1            emas_t,phi_t,jmax) 
+         jdrip=0
+         jcore=0
+         do j=1,jmax
+           if ((rho_t(j).lt.rhocore).and.(jcore.eq.0)) then
+            jcore=j-1
+           end if
+         end do
+
+         endif
         close(unit=20,status='keep')
 c Get the core radius exactly:
         drho=rho_t(jcore)-rho_t(jcore+1)
@@ -145,10 +164,6 @@ c else ienv=isurf+2
 c But in any case imax=isurf !
 c the envelope is bound at rhosurf
         imax=isurf
-
-!         do i=1,imax
-!         write(89,*)rad(i),emas(i),rrho(i),pres(i),phi(i) 
-!         enddo
        return
       end
 c *********************************************************************
@@ -334,16 +349,16 @@ c       INCLUDE 'files_phys.inc.f'
        INCLUDE 'fermi.inc.f'
 c       INCLUDE 'control_nu.inc.f'
        INCLUDE 'quark.inc.f'
-       dimension rho_t(500),nbar_t(500)
-       dimension yneutr_t(500),yprot_t(500),
-     2           yelect_t(500),ymuon_t(500),
-     3           ylambda_t(500),
-     4           ysminus_t(500),yszero_t(500),ysplus_t(500),
-     5           yquarku_t(500),yquarkd_t(500),yquarks_t(500),
-     6           fhad_t(500)
+       dimension rho_t(5000),nbar_t(5000)
+       dimension yneutr_t(5000),yprot_t(5000),
+     2           yelect_t(5000),ymuon_t(5000),
+     3           ylambda_t(5000),
+     4           ysminus_t(5000),yszero_t(5000),ysplus_t(5000),
+     5           yquarku_t(5000),yquarkd_t(5000),yquarks_t(5000),
+     6           fhad_t(5000)
       dimension mstp_t(0:isize),mstn_t(0:isize),mstla_t(0:isize),
      2          mstsm_t(0:isize),msts0_t(0:isize),mstsp_t(0:isize)
-       dimension theta_k_t(500),theta_p_t(500)
+       dimension theta_k_t(5000),theta_p_t(5000)
 
 c ***** Read EOS file: *************************
         if (version.eq.'old') then
@@ -554,9 +569,9 @@ c       INCLUDE 'files_phys.inc.f'
        INCLUDE 'fermi.inc.f'
 c       INCLUDE 'control_nu.inc.f'
        INCLUDE 'quark.inc.f'
-       dimension rho_t(500),nbar_t(500),pres_t(500)
-       dimension yelect_t(500),
-     1           yquarku_t(500),yquarkd_t(500),yquarks_t(500)
+       dimension rho_t(5000),nbar_t(5000),pres_t(5000)
+       dimension yelect_t(5000),
+     1           yquarku_t(5000),yquarkd_t(5000),yquarks_t(5000)
 c *****
         if (debug.ge.1.) then
          print *,'Entering subroutine get_core_chemistry_strange'
@@ -867,8 +882,8 @@ c       INCLUDE 'files_phys.inc.f'
        INCLUDE 'files.inc.f'
        INCLUDE 'profile_star.inc.f'
        INCLUDE 'profile_comp.inc.f'
-       dimension rho_t(500),pres_t(500),bar_t(500),
-     1           a_cell_t(500),a_ion_t(500),z_ion_t(500)
+       dimension rho_t(5000),pres_t(5000),bar_t(5000),
+     1           a_cell_t(5000),a_ion_t(5000),z_ion_t(5000)
        common/temporary/rho_t,a_cell_t,a_ion_t,z_ion_t,jmax
         open (unit=20,file=f_crusteos,status='old')
          read(20,*)jtext,jmax
